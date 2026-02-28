@@ -1,15 +1,19 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-import os
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        username = "admin" # Өзіңіз қалаған логин
-        email = "admin@example.com"
-        password = "your_secure_password" # Өзіңіз қалаған пароль
+        username = "admin"
+        password = "edil0909" # Жаңа пароль қойыңыз
         
-        if not User.objects.filter(username=username).exists():
-            User.objects.create_superuser(username, email, password)
-            self.stdout.write("Superuser created!")
+        user = User.objects.filter(username=username).first()
+        if user:
+            user.set_password(password)
+            user.is_active = True
+            user.is_staff = True
+            user.is_superuser = True
+            user.save()
+            self.stdout.write(f"User {username} updated successfully!")
         else:
-            self.stdout.write("Superuser already exists.")
+            User.objects.create_superuser(username, "admin@example.com", password)
+            self.stdout.write("New superuser created!")
