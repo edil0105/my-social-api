@@ -124,10 +124,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# settings.py ішінде
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    'EXCEPTION_HANDLER': 'myproject.exceptions.custom_exception_handler',
+    # ... басқа баптаулар
 }
 
 SIMPLE_JWT = {
