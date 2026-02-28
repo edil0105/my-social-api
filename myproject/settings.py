@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'myapp',  # Осы жерге өз app-ыңның атын міндетті түрде қос!
+    'django.contrib.staticfiles', # Осы жерге өз app-ыңның атын міндетті түрде қос!
 ]
 
 MIDDLEWARE = [
