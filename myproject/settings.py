@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import dj_database_url
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-2s56+96+*eg_9a5oe#jc@$sfw*l1!god8k!h$_#uejh=ync#1f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['my-social-api-edil.onrender.com']
 
 
 # Application definition
@@ -75,14 +76,10 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mini_instagram_db',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '8889',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3', # Егер база табылмаса, sqlite-ты қолданады
+        conn_max_age=600
+    )
 }
 
 
