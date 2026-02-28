@@ -17,11 +17,11 @@ class LikeAdmin(admin.ModelAdmin):
 
 @admin.register(Follow)
 class FollowAdmin(admin.ModelAdmin):
-    list_display = ('id', 'follower', 'following')
+    list_display = ('id', 'follower') # Тек бар өрістерді қалдыр
 
 @admin.register(Media)
 class MediaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'post', 'file')
+    list_display = ('id', 'post')
 
 # Егер арнайы User моделің болса, оны да қосу керек
 # Бірақ стандартты User болса, ол онсыз да тұр
