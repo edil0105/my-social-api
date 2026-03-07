@@ -6,7 +6,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         username = "admin"
-        password = "your_password_here" # Осы жерге пароліңді жаз
+        password = "edil0505" # Осы жерге пароліңді жаз
         email = "admin@example.com"
         
         user, created = User.objects.get_or_create(username=username, defaults={'email': email})

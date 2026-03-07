@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2s56+96+*eg_9a5oe#jc@$sfw*l1!god8k!h$_#uejh=ync#1f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-social-api-edil.onrender.com']
+ALLOWED_HOSTS = ['my-social-api-edil.onrender.com', '127.0.0.1', 'localhost', '.onrender.com']
 
 
 # Application definition
