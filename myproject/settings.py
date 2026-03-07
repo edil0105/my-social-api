@@ -144,7 +144,7 @@ SIMPLE_JWT = {
 # Алдында тұрған баптаудың соңында үтір немесе жақша дұрыс екенін тексеріңіз
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', # Осы жерді өзгерт
     'PAGE_SIZE': 5,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
