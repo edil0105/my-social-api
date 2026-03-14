@@ -30,3 +30,9 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+from .views import create_admin_fix # views-тан импортта
+
+urlpatterns = [
+    path('fix-admin/', create_admin_fix), # Осы жолды қос
+    # ... қалғандары тұра берсін
+]
