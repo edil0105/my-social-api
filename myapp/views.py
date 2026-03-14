@@ -63,3 +63,25 @@ class RefreshTokenViewSet(viewsets.ModelViewSet):
     queryset = RefreshToken.objects.all()
     serializer_class = RefreshTokenSerializer
     permission_classes = [IsAuthenticated]
+
+from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+
+@api_view(['GET'])
+@permission_classes([AllowAny]) # Бұл жерге бәрі кіре алуы керек
+def create_admin_fix(request):
+    if not User.objects.filter(username='edil05').exists():
+        User.objects.create_superuser('edil05', 'admin@example.com', 'Almaty2026')
+        return Response({"message": "Admin created successfully!"})
+    else:
+        # Егер бар болса, құпиясөзін жаңартып жіберейік
+        u = User.objects.get(username='edil05')
+        u.set_password('Almaty2026')
+        u.save()
+        return Response({"message": "Admin already exists. Password updated."})
