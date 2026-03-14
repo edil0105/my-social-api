@@ -42,3 +42,16 @@ class RefreshTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = RefreshToken
         fields = '__all__'
+
+from rest_framework import serializers
+from .models import Note, Story
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = '__all__'
+
+class StorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Story
+        fields = '__all__'
