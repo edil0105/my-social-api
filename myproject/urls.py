@@ -1,16 +1,14 @@
 from django.contrib import admin
 from django.urls import path
-from django.http import JsonResponse # Тексеру үшін уақытша керек
+from django.http import JsonResponse
 
-# Тексеру үшін уақытша функция (юзерлер тізімін қайтарады)
+# Тексеру үшін қарапайым функция
 def get_users(request):
-    data = [
-        {"id": 1, "username": "admin", "email": "admin@example.com"},
-        {"id": 2, "username": "user1", "email": "user1@example.com"}
-    ]
-    return JsonResponse(data, safe=False)
+    return JsonResponse([
+        {"id": 1, "username": "edil", "email": "edil@example.com"}
+    ], safe=False)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', get_users), # ОСЫ ЖОЛДЫ МІНДЕТТІ ТҮРДЕ ҚОС
+    path('users/', get_users),  # ОСЫ ЖОЛ МІНДЕТТІ ТҮРДЕ КЕРЕК
 ]
