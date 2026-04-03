@@ -152,7 +152,12 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'myproject.exceptions.custom_exception_handler',
 }
 
+import dj_database_url
 import os
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
