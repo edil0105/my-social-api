@@ -161,3 +161,11 @@ DATABASES = {
         conn_max_age=600
     )
 }
+import os
+
+# Басқа статикалық баптаулардың астына қосыңыз
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Render-де статикалық файлдарды дұрыс көрсету үшін WhiteNoise қолданған жөн
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
