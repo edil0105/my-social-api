@@ -1,14 +1,7 @@
 from django.contrib import admin
-from django.urls import path
-from django.http import JsonResponse
-
-# Тексеру үшін қарапайым функция
-def get_users(request):
-    return JsonResponse([
-        {"id": 1, "username": "edil", "email": "edil@example.com"}
-    ], safe=False)
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', get_users),  # ОСЫ ЖОЛ МІНДЕТТІ ТҮРДЕ КЕРЕК
+    path('api/', include('myapp.urls')),  # Барлық API /api/ арқылы жұмыс істейді
 ]
