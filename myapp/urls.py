@@ -2,10 +2,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import (
-    UserProfileViewSet, PostViewSet, MediaViewSet,
-    FollowViewSet, LikeViewSet, CommentViewSet,
-    NoteViewSet, StoryViewSet,
-    RegisterView, FeedView
+    UserProfileViewSet, PostViewSet, MediaViewSet, FollowViewSet,
+    LikeViewSet, CommentViewSet, NoteViewSet, StoryViewSet,
+    RegisterView, FeedView, ConversationListView, ChatView
 )
 
 router = DefaultRouter()
@@ -20,8 +19,10 @@ router.register(r'stories',  StoryViewSet, basename='story')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('token/',         TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(),    name='token_refresh'),
-    path('register/',      RegisterView.as_view(),         name='register'),
-    path('feed/',          FeedView.as_view(),             name='feed'),
+    path('token/',                   TokenObtainPairView.as_view()),
+    path('token/refresh/',           TokenRefreshView.as_view()),
+    path('register/',                RegisterView.as_view()),
+    path('feed/',                    FeedView.as_view()),
+    path('conversations/',           ConversationListView.as_view()),
+    path('chat/<int:user_id>/',      ChatView.as_view()),
 ]
